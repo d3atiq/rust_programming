@@ -15,13 +15,14 @@ fn main() {
     //    Hint: use arg.ends_with("s")
     //
     //inspect(&arg);
+    inspect(&arg);
 
     // 2. Write a function "change()" that takes a mutable reference to arg
     //    and adds an "s" to the string if it doesn't already end with "s".
     //    Then uncomment and run this code.  Hint: use arg.push_str("s")
     //
-    //change(&mut arg);
-    //println!("I have many {}", arg);
+    change(&mut arg);
+    println!("I have many {}", arg);
 
     // 3. Write a function "eat" that consumes arg and returns a bool
     //    indicating whether or not arg contains an "a" AND starts with a "b".
@@ -29,11 +30,29 @@ fn main() {
     //    Hint 1: use arg.contains("a")
     //    Hint 2: && is the boolean AND operator
     //
-    //if eat(arg) {
-    //    println!("Might be bananas");
-    //} else {
-    //    println!("Not bananas");
-    //}
+    if eat(arg) {
+        println!("Might be bananas");
+    } else {
+        println!("Not bananas");
+    }
 
     // Try running this program with "apple", "banana", and "grapes"  :-)
+}
+
+fn inspect(s: &String) {
+    if s.ends_with("s") {
+        println!("plural");
+    } else {
+        println!("singular");
+    }
+}
+
+fn change(s: &mut String) {
+    if !s.ends_with("s") {
+        s.push_str("s");
+    }
+}
+
+fn eat(s: String) -> bool {
+    s.starts_with("b") && s.contains("a")
 }
