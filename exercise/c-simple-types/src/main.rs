@@ -6,7 +6,7 @@ fn main() {
     // in coords.  Use tuple indexing. Hint: It's NOT square brackets.
     //
     // print_difference(...)
-
+    print_difference(coords.0, coords.1);
 
     // 2. We want to use print_array() to print coords...but coords isn't an array!
     //    Create an array of type [f32; 2] and initialize it to contain the
@@ -14,26 +14,29 @@ fn main() {
     //
     // let coords_arr...
     // print_array(coords_arr);
-
+    let coord_array: [f32; 2] = [coords.0, coords.1];
+    print_array(coord_array);
 
     let series = [1, 1, 2, 3, 5, 8, 13];
     // 3. Make the ding() function happy by passing it the value 13 out of the
     // series array.  Use array indexing.
     //
     // ding(...)
-
+    ding(series[6]);
 
     let mess = ([3, 2], 3.14, [(false, -3), (true, -100)], 5, "candy");
     // 4. Pass the on_off function the value "true" from mess.  I'll get you
     //    started:
     //
     // on_off(mess.2
+    on_off(mess.2[1].0);
 
 
     // Challenge: This works just fine.  Uncomment it and then follow the
     // instructions above the print_distance() function definition.
     //
     // print_distance(coords);
+    print_distance(coords);
 }
 
 fn print_difference(x: f32, y: f32) {
@@ -60,9 +63,9 @@ fn on_off(val: bool) {
 // us, Rust supports destructuring function arguments.  Try replacing "z" in the
 // parameter list with "(x, y)" and adjust the calculation in the function body
 // accordingly.
-fn print_distance(z: (f32, f32)) {
+fn print_distance((x, y): (f32, f32)) {
     println!(
         "Distance to the origin is {}",
-        (z.0.powf(2.0) + z.1.powf(2.0)).sqrt());
+        (x.powf(2.0) + y.powf(2.0)).sqrt());
 }
 
